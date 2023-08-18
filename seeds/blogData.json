@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Why is Halloween Important?",
+        "content": "Halloween is important because of the rich history and culture people from Ireland and the Continental US have developed.",
+        "user_id": 1,
+        "date_created": "10/31/1978"
+    },
+    {
+        "title": "Who is Annie Brackett?",
+        "content": "Annie was the friend of Laurie Strode in the 1978 Halloween movie. She was murdered by Michael Myers on Halloween night.",
+        "user_id": 2,
+        "date_created": "10/30/1978"
+    },
+    {
+        "title": "How Did Laurie Survive Halloween Night?",
+        "content": "Laurie stabbed Michael in the eye with the end of a wire hanger, and when Dr. Loomis finds her he unloads 6 rounds into Michael whereafter he falls off the balcony, yet somehow escapes.",
+        "user_id": 3,
+        "date_created": "11/01/1978"
+    }
+]
