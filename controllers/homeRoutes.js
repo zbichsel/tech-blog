@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Comment, Blog } = require ('../models');
-// !-- add withAuth file here --!
+// !-- add withAuth file here to verify users --!
+const withAuth = require('../utils/auth');
 
 // !-- Get all blogs --!
 router.get('/', async (req, res) => {
