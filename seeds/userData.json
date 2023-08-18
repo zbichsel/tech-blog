@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Michael Myers",
+        "email": "michaelmyers@haddonfield.com",
+        "password": "lauriestrodeisnext123"
+    },
+    {
+        "name": "Laurie Strode",
+        "email": "stroderealty@haddonfield.com",
+        "password": "halloweenisnext123"
+    },
+    {
+        "name": "Annie Brackett",
+        "email": "brackettannie@haddonfield.com",
+        "password": "brackettisnext123"
+    }
+]

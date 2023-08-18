@@ -1,17 +1,20 @@
 [
     {
-        "name": "Michael Myers",
-        "email": "michaelmyers@haddonfield.com",
-        "password": "lauriestrodeisnext123"
+        "content": "How did Michael escape?",
+        "blog_id": 2,
+        "user_id": 1,
+        "date_created": "03/12/1982"
     },
     {
-        "name": "Laurie Strode",
-        "email": "stroderealty@haddonfield.com",
-        "password": "halloweenisnext123"
+        "content": "I never knew this about that movie!",
+        "blog_id": 3,
+        "user_id": 2,
+        "date_created": "05/02/1992"
     },
     {
-        "name": "Annie Brackett",
-        "email": "brackettannie@haddonfield.com",
-        "password": "brackettisnext123"
+        "content": "This is my favorite movie ever!",
+        "blog_id": 1,
+        "user_id": 3,
+        "date_created": "10/12/1988"
     }
 ]
