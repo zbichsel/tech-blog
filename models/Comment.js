@@ -9,7 +9,7 @@ Comment.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement,
+            autoIncrement: true,
         },
         content: {
             type: DataTypes.STRING,
@@ -20,11 +20,11 @@ Comment.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        post_id: {
+        blog_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'post',
+                model: 'blog',
                 key: 'id',
             },
         },
