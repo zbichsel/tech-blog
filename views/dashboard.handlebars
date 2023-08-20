@@ -1,0 +1,65 @@
+<div class="row text-light">
+    <div class="col-auto">
+        <h2>Welcome, {{name}}!</h2>
+    </div>
+</div>
+
+<div class="row mt-4 text-light">
+    <div class="col-md-6">
+        <h3>Write a new Blog!</h3>
+
+        <form class="for new-post-form">
+            <div class="form-group">
+                <label for="blog-title">Blog Title:</label>
+                <input type="text" class="form-input" id="blog-title" name="blog-title" />
+            </div>
+            <div class="form-group">
+                <label for="blog-content">Content:</label>
+                <textarea name="blog-content" id="blog-content" name="blog-content"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="newBlogButton" type="submit" class="btn btn-success">Create</button>
+            </div>
+        </form>
+
+        {{#if blogs.length}}
+        {{#each blogs as |blog|}}
+        <h3>Update an existing blog:</h3>
+
+        <form class="form updating-blog-form">
+            <input type="hidden" name="blog-id" id="blog-id" value="{{blog.id}}" />
+            <div class="form-group">
+                <label for="updating-title">Blog Title:</label>
+                <input type="text" class="form-input" id="update-title" name="update-title" />
+            </div>
+            <div class="form-group">
+                <label for="update-content">Content:</label>
+                <textarea name="update-content" id="update-content" class="form-input"></textarea>
+            </div>
+            <div class="form-group">
+                <button id="updateBlogButton" type="submit" class="btn btn-warning" data-id="{{blog.id}}">Update</button>
+            </div>
+        </form>
+        {{/each}}
+        {{/if}}
+    </div>
+
+    <div class="col-md-6 blog-list">
+        <h3>Current Blogs:</h3>
+        {{#if blogs.length}}
+        {{#each blogs as |blog|}}
+        <div class="row mb-2">
+            <div class="col-md-8">
+                <h4><a href="/blog/{{blog.id}}">{{blog.title}}</a></h4>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-sm btn-warning" id="startUpdateBlogButton" data-id="{{blog.id}}">Update</button>
+                <button class="btn btn-sm btn-danger" id="deleteBlogButton" data-id="{{blog.id}}">Update</button>
+            </div>
+        </div>
+        {{/else}}
+        {{/if}}
+    </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
