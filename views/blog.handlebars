@@ -1,0 +1,29 @@
+<div class="row mb-4 text-light">
+    <div class="col-md-12">
+        <h2>
+            <a href="/post/{{blog.id}}">{{blog.title}}</a>
+        </h2>
+        <p>{{blog.content}}</p>
+        <p>Written by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+
+        {{#if logged_in}}
+        <div class="form-group">
+            <input type="hidden" name="blog-id" value="{{blog.id}}" />
+            <label for="addComment">Comment:</label>
+            <textarea name="commentText" id="form-control commentText" rows="2"></textarea>
+        </div>
+        <button type="submit" id="addComment" class="btn btn-success">Submit</button>
+        {{/if}}
+        <h3>
+            Comments:
+        </h3>
+        {{#each blog.comments as |comment|}}
+        <p>{{comment.content}}</p>
+        <p>Written by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+        {{/each}}
+    </div>
+</div>
+
+{{#if logged_in}}
+<script src="/js/comment.js"></script>
+{{/if}}

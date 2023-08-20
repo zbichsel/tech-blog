@@ -1,10 +1,10 @@
-const { log } = require("console");
+// const { log } = require("console"); //what is this
 
 const loginFormHandler = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
+    const email = document.querySelector('input[name="userEmail"]').value.trim();
+    const password = document.querySelector('input[name="userPassword"]').value.trim();
 
     if (email && password) {
         const response = await fetch('/api/users/login', {
@@ -14,7 +14,7 @@ const loginFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.reload();
         } else {
             alert(response.statusText);
         }

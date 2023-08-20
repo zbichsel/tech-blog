@@ -52,7 +52,7 @@ const updateFormHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        const reponse = await fetch(`/api/blogs/${id}`, {
+        const response = await fetch(`/api/blogs/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content, date_created }),
             headers: {

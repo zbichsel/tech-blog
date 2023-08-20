@@ -8,7 +8,9 @@ router.get('/api/comments', (req, res) => res.json({ User, Blog, Comment }));
 // !-- Get ALL comments --!
 router.get('/', async (req, res) => {
     try {
-        const commentData = await Comment.findAll();
+        const commentData = await Comment.findAll({
+            include: [{ Blog }] //idk if i need this yet;
+        });
 
         res.status(200).json(commentData);
     } catch (err) {
@@ -26,7 +28,7 @@ router.post('/', withAuth, async (req, res) => {
 
         res.status(200).json(commentData);
     } catch (err) {
-        res.status(500).json(err);
+        res.status(400).json(err);
     }
 });
 
