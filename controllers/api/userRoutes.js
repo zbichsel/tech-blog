@@ -53,6 +53,7 @@ router.get('/loggedin', async (req, res) => {
 
 // !-- CREATE user --!
 router.post('/', async (req, res) => {
+    console.log(req);
     try {
         const userData = await User.create(req.body);
 
@@ -60,10 +61,10 @@ router.post('/', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
 
-            res.status(200).json(userData);
+            res.status(201).json(userData); //server created new resource
         });
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err.message);
     }
 });
 
@@ -77,7 +78,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const validPassword = userData.checkPassword(req.body.password); //removed an await here//
+        const validPassword = await userData.checkPassword(req.body.password); //removed an await here//
 
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect email or password, please try again.'});

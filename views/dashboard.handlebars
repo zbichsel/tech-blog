@@ -5,7 +5,7 @@
 </div>
 
 <div class="row mt-4 text-light">
-    <div class="col-md-6">
+    <div class="col-md-6 col-lg-12">
         <h3>Write a new Blog!</h3>
 
         <form class="for new-post-form">
@@ -15,50 +15,54 @@
             </div>
             <div class="form-group">
                 <label for="blog-content">Content:</label>
-                <textarea name="blog-content" id="blog-content" name="blog-content"></textarea>
+                <textarea name="blog-content" id="blog-content" class="form-input"></textarea>
             </div>
             <div class="form-group">
-                <button class="newBlogButton" type="submit" class="btn btn-success">Create</button>
+                <button class="newBlogButton btn btn-success" type="submit">Create</button>
             </div>
         </form>
 
         {{#if blogs.length}}
-        {{#each blogs as |blog|}}
-        <h3>Update an existing blog:</h3>
+        <div class="col-md-6 col-lg-12">
+            {{#each blogs as |blog|}}
+            <h3>Update an existing blog:</h3>
 
-        <form class="form updating-blog-form">
-            <input type="hidden" name="blog-id" id="blog-id" value="{{blog.id}}" />
-            <div class="form-group">
-                <label for="updating-title">Blog Title:</label>
-                <input type="text" class="form-input" id="update-title" name="update-title" />
-            </div>
-            <div class="form-group">
-                <label for="update-content">Content:</label>
-                <textarea name="update-content" id="update-content" class="form-input"></textarea>
-            </div>
-            <div class="form-group">
-                <button id="updateBlogButton" type="submit" class="btn btn-warning" data-id="{{blog.id}}">Update</button>
-            </div>
-        </form>
-        {{/each}}
-        {{/if}}
-    </div>
-
-    <div class="col-md-6 blog-list">
-        <h3>Current Blogs:</h3>
-        {{#if blogs.length}}
-        {{#each blogs as |blog|}}
-        <div class="row mb-2">
-            <div class="col-md-8">
-                <h4><a href="/blog/{{blog.id}}">{{blog.title}}</a></h4>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-sm btn-warning" id="startUpdateBlogButton" data-id="{{blog.id}}">Update</button>
-                <button class="btn btn-sm btn-danger" id="deleteBlogButton" data-id="{{blog.id}}">Update</button>
-            </div>
+            <form class="form updating-blog-form">
+                <input type="hidden" name="blog-id" id="blog-id" value="{{blog.id}}" />
+                <div class="form-group">
+                    <label for="update-title">Blog Title:</label>
+                    <input type="text" class="form-input" id="update-title" name="update-title" />
+                </div>
+                <div class="form-group">
+                    <label for="update-content">Content:</label>
+                    <textarea name="update-content" id="update-content" class="form-input"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-warning" id="updateBlogButton" type="submit"
+                        data-id="{{blog.id}}">Update</button>
+                </div>
+            </form>
+            {{/each}}
         </div>
-        {{/else}}
         {{/if}}
+
+        <div class="col-md-6 col-lg-12 blog-list">
+            {{#if blogs.length}}
+            <h3>Current Blogs:</h3>
+            {{#each blogs as |blog|}}
+            <div class="row mb-2">
+                <div class="col-md-8">
+                    <h4><a href="/blog/{{blog.id}}">{{blog.title}}</a></h4>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-sm btn-warning" id="startUpdateBlogButton"
+                        data-id="{{blog.id}}">Update</button>
+                    <button class="btn btn-sm btn-danger" id="deleteBlogButton" data-id="{{blog.id}}">Delete</button>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
     </div>
 </div>
 

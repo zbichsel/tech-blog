@@ -1,26 +1,33 @@
 <div class="row mb-4 text-light">
     <div class="col-md-12">
-        <h2>
-            <a href="/post/{{blog.id}}">{{blog.title}}</a>
+        <h2 class="mb-3">
+            <a href="/post/{{blog.id}}" class="text-light">{{blog.title}}</a>
         </h2>
         <p>{{blog.content}}</p>
-        <p>Written by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+        <p class="text-muted mb-1">Written by {{blog.user.name}} on {{format_date blog.date_created}}</p>
 
         {{#if logged_in}}
-        <div class="form-group">
-            <input type="hidden" name="blog-id" value="{{blog.id}}" />
-            <label for="addComment">Comment:</label>
-            <textarea name="commentText" id="form-control commentText" rows="2"></textarea>
+        <div class="mt-4">
+            <h4 class="mb-2">Add a Comment:</h4>
+            <form class="form comment-form">
+                <input type="hidden" name="blog-id" value="{{blog.id}}" />
+                <div class="form-group">
+                    <textarea name="commentText" id="commentText" class="form-control" rows="2"></textarea>
+                </div>
+                <button type="submit" id="addComment" class="btn btn-success">Submit</button>
+            </form>
         </div>
-        <button type="submit" id="addComment" class="btn btn-success">Submit</button>
         {{/if}}
-        <h3>
-            Comments:
-        </h3>
-        {{#each blog.comments as |comment|}}
-        <p>{{comment.content}}</p>
-        <p>Written by {{comment.user.name}} on {{format_date comment.date_created}}</p>
-        {{/each}}
+
+        <div class="mt-4">
+            <h3>Comments:</h3>
+            {{#each blog.comments as |comment|}}
+            <div class="comment mb-3 text-white">
+                <p>{{comment.content}}</p>
+                <p class=" mb-0">Written by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+            </div>
+            {{/each}}
+        </div>
     </div>
 </div>
 

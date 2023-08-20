@@ -1,0 +1,67 @@
+body {
+    background-color: #f8f9fa; /* Light gray background */
+}
+.artistic-header {
+    background-color: #FF6B6B; /* Coral background */
+    padding: 20px 0;
+    text-align: center;
+}
+.artistic-header h1 {
+    font-size: 2.5rem;
+    color: #fff; /* White text */
+}
+.divider {
+    border-bottom: 1px solid #dee2e6; /* Light gray divider */
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+.login-form, .signup-form {
+    background-color: #ffffff; /* White form background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.form-label {
+    font-weight: bold;
+    color: black;
+}
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.form-button {
+    background-color: #FF6B6B; /* Coral button background */
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-button:hover {
+    background-color: #FF4E4E; /* Darker coral on hover */
+}
+.header {
+    background-color: #FF6B6B; /* Coral header background */
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.new-blog-section {
+    padding: 20px;
+    background-color: #ffffff; /* White section background */
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color:black
+}
+.blog-entry {
+    padding: 15px;
+    background-color: #ffffff; /* White blog entry background */
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    color: white;
+}
