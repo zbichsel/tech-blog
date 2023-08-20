@@ -8,7 +8,12 @@ router.get('/', async (req, res) => {
     try {
         // !-- Get all projects and JOIN with user data --!
         const blogData = await Blog.findAll({
-            include: [{ model: User, Blog, Comment, attributes: ['name']}]
+            include: [
+                {
+                    model: User, Blog, Comment,
+                    attributes: ['name'],
+                },
+            ],
         });
 
         // !-- Serialize data so template can read it --!
@@ -25,17 +30,71 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/homepage', async (req, res) => {
+    try {
+        const blogData = await Blog.findAll({
+            include: [
+                {
+                    model: User, Blog, Comment,
+                    attributes: ['name'],
+                },
+            ],
+        });
+        const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+        res.render('homepage', {
+            blogs,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // !-- get blog by ID --!
 router.get('/blog/:id', async (req, res) => {
     try {
         const blogData = await Blog.findByPk(req.params.id, {
-            include: [{ model: User, attributes: ['name']}]
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                    include: [User],
+                },
+            ],
         });
 
         const blog = blogData.get({ plain: true });
 
         res.render('blog', {
-            ...blog,
+            blog,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/', async (req, res) => {
+    try {
+        const blogData = await Blog.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Comment,
+                },
+            ],
+        });
+        const blog = blogData.get({ plain: true });
+
+        res.render('blog', {
+            blog,
             logged_in: req.session.logged_in
         });
     } catch (err) {
@@ -54,9 +113,30 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
         const user = userData.get({ plain: true });
 
-        res.render('profile', {
+        res.render('dashboard', {
             ...user,
             logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.get('/updatepost', async (req, res) => {
+    try{
+        const blogData = await Blog.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                }
+            ],
+        });
+        const blog = blogData.get({ plain: true });
+
+        res.render('updatepost', {
+            blog,
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
